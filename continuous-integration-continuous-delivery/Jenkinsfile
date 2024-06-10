@@ -112,7 +112,6 @@ pipeline {
                        
                         // Run your shell script with the IMAGE_TAG parameter
                         sh """
-                        sh 'chmod +x ./mvnw'
                         ./mvnw clean install
                         docker rmi -f ${DOCKER_IMAGE}:V00${IMAGE_TAG} &>/dev/null && echo 'Removed old container'
                         docker build -t ${DOCKER_IMAGE}:V00${IMAGE_TAG} .
